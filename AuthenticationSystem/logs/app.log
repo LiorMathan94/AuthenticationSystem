@@ -1,0 +1,83 @@
+2022-11-09 14:23:30,087 INFO    AuthApp.AuthenticationController - Creating new AuthenticationController instance - int Level:400
+2022-11-09 14:23:30,098 DEBUG   AuthApp.AuthenticationController - in AuthenticationController constructor - int Level:500
+2022-11-09 14:23:30,102 DEBUG   AuthApp.UserRepository - in UserRepository constructor - int Level:500
+2022-11-09 14:23:30,103 DEBUG   AuthApp.UserRepository - in UserRepository.parseConfigToMap() - int Level:500
+2022-11-09 14:23:30,193 DEBUG   AuthApp.UserController - in UserController constructor - int Level:500
+2022-11-09 14:23:30,196 INFO    AuthApp.UserController - Creating new UserService instance - int Level:400
+2022-11-09 14:23:30,197 DEBUG   AuthApp.UserController - in UserService constructor - int Level:500
+2022-11-09 14:23:30,197 INFO    AuthApp.UserController - Creating new UserController instance - int Level:400
+2022-11-09 14:23:30,198 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.login() - int Level:500
+2022-11-09 14:23:30,198 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidEmail() - int Level:500
+2022-11-09 14:23:30,199 DEBUG   AuthApp.UserRepository - in UserRepository.getUserByEmail() - int Level:500
+2022-11-09 14:23:30,201 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.register() - int Level:500
+2022-11-09 14:23:30,201 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidEmail() - int Level:500
+2022-11-09 14:23:30,201 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidName() - int Level:500
+2022-11-09 14:23:30,201 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidPassword() - int Level:500
+2022-11-09 14:23:30,201 DEBUG   AuthApp.UserRepository - in UserRepository.getUserByEmail() - int Level:500
+2022-11-09 14:23:30,202 WARN    AuthApp.AuthenticationService - in AuthenticationService.register: This email already exists in the system!  - int Level:300
+2022-11-09 14:23:30,202 DEBUG   AuthApp.UserController - in UserController.updateUserName() - int Level:500
+2022-11-09 14:23:30,202 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidName() - int Level:500
+2022-11-09 14:23:30,202 DEBUG   AuthApp.UserController - in UserService.updateUserName() - int Level:500
+2022-11-09 14:23:30,203 DEBUG   AuthApp.UserController - in UserService.validateToken() - int Level:500
+2022-11-09 14:23:30,203 DEBUG   AuthApp.UserRepository - in UserRepository.getUserByEmail() - int Level:500
+2022-11-09 14:23:30,203 DEBUG   AuthApp.UserRepository - in UserRepository.updatedUser() - int Level:500
+2022-11-09 14:23:30,203 DEBUG   AuthApp.UserRepository - in UserRepository.writeToFile() - int Level:500
+2022-11-09 14:23:30,203 DEBUG   AuthApp.UserRepository - in UserRepository.getUserFilepath() - int Level:500
+2022-11-09 14:23:30,219 DEBUG   AuthApp.UserController - in UserController.updateUserEmail() - int Level:500
+2022-11-09 14:23:30,220 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidEmail() - int Level:500
+2022-11-09 14:23:30,221 ERROR   AuthApp.UserController - In UserController.updateUserEmail: invalid email - int Level:200
+2022-11-09 14:23:30,222 DEBUG   AuthApp.UserController - in UserController.updateUserPassword() - int Level:500
+2022-11-09 14:23:30,222 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidPassword() - int Level:500
+2022-11-09 14:23:30,223 DEBUG   AuthApp.UserController - in UserService.updateUserPassword() - int Level:500
+2022-11-09 14:23:30,223 DEBUG   AuthApp.UserController - in UserService.validateToken() - int Level:500
+2022-11-09 14:23:30,223 DEBUG   AuthApp.UserController - in UserController.deleteUser() - int Level:500
+2022-11-09 14:23:30,224 DEBUG   AuthApp.UserController - in UserService.deleteUser() - int Level:500
+2022-11-09 14:23:30,224 DEBUG   AuthApp.UserController - in UserService.validateToken() - int Level:500
+2022-11-09 14:30:24,970 INFO    AuthApp.AuthenticationController - Creating new AuthenticationController instance - int Level:400
+2022-11-09 14:30:24,975 DEBUG   AuthApp.AuthenticationController - in AuthenticationController constructor - int Level:500
+2022-11-09 14:30:24,979 DEBUG   AuthApp.UserRepository - in UserRepository constructor - int Level:500
+2022-11-09 14:30:24,980 DEBUG   AuthApp.UserRepository - in UserRepository.parseConfigToMap() - int Level:500
+2022-11-09 14:30:25,072 DEBUG   AuthApp.UserController - in UserController constructor - int Level:500
+2022-11-09 14:30:25,074 INFO    AuthApp.UserController - Creating new UserService instance - int Level:400
+2022-11-09 14:30:25,074 DEBUG   AuthApp.UserController - in UserService constructor - int Level:500
+2022-11-09 14:30:25,074 INFO    AuthApp.UserController - Creating new UserController instance - int Level:400
+2022-11-09 14:30:25,074 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.register() - int Level:500
+2022-11-09 14:30:25,076 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidEmail() - int Level:500
+2022-11-09 14:30:25,076 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidName() - int Level:500
+2022-11-09 14:30:25,077 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidPassword() - int Level:500
+2022-11-09 14:30:25,077 DEBUG   AuthApp.UserRepository - in UserRepository.getUserByEmail() - int Level:500
+2022-11-09 14:30:25,077 WARN    AuthApp.AuthenticationService - in AuthenticationService.register: This email already exists in the system!  - int Level:300
+2022-11-09 14:30:25,077 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.login() - int Level:500
+2022-11-09 14:30:25,078 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidEmail() - int Level:500
+2022-11-09 14:30:25,079 DEBUG   AuthApp.UserRepository - in UserRepository.getUserByEmail() - int Level:500
+2022-11-09 14:30:25,079 DEBUG   AuthApp.UserController - in UserController.updateUserName() - int Level:500
+2022-11-09 14:30:25,079 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidName() - int Level:500
+2022-11-09 14:30:25,080 DEBUG   AuthApp.UserController - in UserService.updateUserName() - int Level:500
+2022-11-09 14:30:25,080 DEBUG   AuthApp.UserController - in UserService.validateToken() - int Level:500
+2022-11-09 14:30:25,080 DEBUG   AuthApp.UserRepository - in UserRepository.getUserByEmail() - int Level:500
+2022-11-09 14:30:25,080 DEBUG   AuthApp.UserRepository - in UserRepository.updatedUser() - int Level:500
+2022-11-09 14:30:25,080 DEBUG   AuthApp.UserRepository - in UserRepository.writeToFile() - int Level:500
+2022-11-09 14:30:25,080 DEBUG   AuthApp.UserRepository - in UserRepository.getUserFilepath() - int Level:500
+2022-11-09 14:30:25,108 DEBUG   AuthApp.UserController - in UserController.updateUserEmail() - int Level:500
+2022-11-09 14:30:25,108 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidEmail() - int Level:500
+2022-11-09 14:30:25,109 DEBUG   AuthApp.UserController - in UserService.updateUserEmail() - int Level:500
+2022-11-09 14:30:25,109 DEBUG   AuthApp.UserController - in UserService.validateToken() - int Level:500
+2022-11-09 14:30:25,109 DEBUG   AuthApp.UserRepository - in UserRepository.getUserByEmail() - int Level:500
+2022-11-09 14:30:25,109 DEBUG   AuthApp.UserRepository - in UserRepository.updatedUser() - int Level:500
+2022-11-09 14:30:25,109 DEBUG   AuthApp.UserRepository - in UserRepository.writeToFile() - int Level:500
+2022-11-09 14:30:25,109 DEBUG   AuthApp.UserRepository - in UserRepository.getUserFilepath() - int Level:500
+2022-11-09 14:30:25,111 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.updateTokenEmailKey() - int Level:500
+2022-11-09 14:30:25,111 DEBUG   AuthApp.UserController - in UserController.updateUserPassword() - int Level:500
+2022-11-09 14:30:25,112 DEBUG   AuthApp.AuthenticationController - in AuthenticationController.isValidPassword() - int Level:500
+2022-11-09 14:30:25,112 DEBUG   AuthApp.UserController - in UserService.updateUserPassword() - int Level:500
+2022-11-09 14:30:25,113 DEBUG   AuthApp.UserController - in UserService.validateToken() - int Level:500
+2022-11-09 14:30:25,113 DEBUG   AuthApp.UserRepository - in UserRepository.getUserByEmail() - int Level:500
+2022-11-09 14:30:25,113 DEBUG   AuthApp.UserRepository - in UserRepository.updatedUser() - int Level:500
+2022-11-09 14:30:25,113 DEBUG   AuthApp.UserRepository - in UserRepository.writeToFile() - int Level:500
+2022-11-09 14:30:25,113 DEBUG   AuthApp.UserRepository - in UserRepository.getUserFilepath() - int Level:500
+2022-11-09 14:30:25,114 DEBUG   AuthApp.UserController - in UserController.deleteUser() - int Level:500
+2022-11-09 14:30:25,115 DEBUG   AuthApp.UserController - in UserService.deleteUser() - int Level:500
+2022-11-09 14:30:25,116 DEBUG   AuthApp.UserController - in UserService.validateToken() - int Level:500
+2022-11-09 14:30:25,116 DEBUG   AuthApp.UserRepository - in UserRepository.getUserByEmail() - int Level:500
+2022-11-09 14:30:25,116 DEBUG   AuthApp.UserRepository - in UserRepository.deleteUser() - int Level:500
+2022-11-09 14:30:25,116 DEBUG   AuthApp.UserRepository - in UserRepository.getUserFilepath() - int Level:500

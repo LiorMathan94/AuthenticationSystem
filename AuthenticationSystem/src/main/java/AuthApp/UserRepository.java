@@ -2,6 +2,8 @@ package AuthApp;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -14,9 +16,12 @@ public class UserRepository {
     private static UserRepository singleInstance = null;
     private final String usersFilepath = "UsersDB";
     private Map<Integer, User> usersMap;
+    private static Logger logger = LogManager.getLogger(UserRepository.class.getName());
 
 
     private UserRepository() throws IOException {
+        logger.debug("in UserRepository constructor - int Level:500");
+
         Files.createDirectories(Paths.get(this.usersFilepath));
         parseConfigToMap();
     }
@@ -29,25 +34,29 @@ public class UserRepository {
         return singleInstance;
     }
 
-    public boolean addUser(User user) {
-        usersMap.put(user.getId(), user);
-        return writeToFile(user);
+    public void addUser(User user) {
+        logger.debug("in UserRepository.addUser() - int Level:500");
+
+        this.usersMap.put(user.getId(), writeToFile(user));
     }
 
-    public boolean updatedUser(User user) {
-        this.usersMap.put(user.getId(), user);
-        return writeToFile(user);
+    public void updatedUser(User user) {
+        logger.debug("in UserRepository.updatedUser() - int Level:500");
+
+        this.usersMap.put(user.getId(), writeToFile(user));
     }
 
-    public boolean deleteUser(User user) {
-        this.usersMap.remove(user.getId());
+    public void deleteUser(User user) {
+        logger.debug("in UserRepository.deleteUser() - int Level:500");
+
         File userFile = new File(getUserFilepath(user));
         userFile.delete();
-
-        return true;
+        this.usersMap.remove(user.getId());
     }
 
     public Optional<User> getUserByEmail(String email) {
+        logger.debug("in UserRepository.getUserByEmail() - int Level:500");
+
         for (User user : usersMap.values()) {
             if (user.getEmail().compareTo(email) == 0) {
                 return Optional.of(user);
@@ -58,10 +67,14 @@ public class UserRepository {
     }
 
     private String getUserFilepath(User user) {
+        logger.debug("in UserRepository.getUserFilepath() - int Level:500");
+
         return this.usersFilepath + File.separator + user.getId() + ".json";
     }
 
     public void parseConfigToMap() {
+        logger.debug("in UserRepository.parseConfigToMap() - int Level:500");
+
         this.usersMap = new HashMap<>();
 
         final File folder = new File(this.usersFilepath);
@@ -77,13 +90,15 @@ public class UserRepository {
         }
     }
 
-    private boolean writeToFile(User user) {
+    private User writeToFile(User user) {
+        logger.debug("in UserRepository.writeToFile() - int Level:500");
+
         String absoluteFilePath = getUserFilepath(user);
 
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(absoluteFilePath)))) {
             Gson gson = new Gson();
             gson.toJson(user, writer);
-            return true;
+            return user;
         } catch (FileNotFoundException e) {
             throw new RuntimeException("Filename: \"" + absoluteFilePath + "\" was not found.");
         } catch (IOException e) {

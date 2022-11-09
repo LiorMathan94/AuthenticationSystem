@@ -39,36 +39,32 @@ public class Main {
     }
 
     private static void testUpdate(Client client) {
-        boolean success;
-
         System.out.println(">>>>>>>>> Updating user name: Lior Mathan -> Ellie Mathan");
         try {
-            success = client.updateUserName("lior.mathan@gmail.com", "Ellie Mathan");
+            client.updateUserName("lior.mathan@gmail.com", "Ellie Mathan");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
 
         System.out.println(">>>>>>>>> Updating user email: \"lior.mathan@gmail.com\" -> \"ellie.mathan@gmail.com\"");
         try {
-            success = client.updateUserEmail("lior.mathan@gmail.com", "ellie.mathan@gmail.com");
+            client.updateUserEmail("lior.mathan@gmail.com", "ellie.mathan@gmail.com");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
 
         System.out.println(">>>>>>>>> Updating user's password: 1234As -> TrustNo1");
         try {
-            success = client.updateUserPassword("ellie.mathan@gmail.com", "TrustNo1");
+            client.updateUserPassword("ellie.mathan@gmail.com", "TrustNo1");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
 
     private static void testDelete(Client client) {
-        boolean success;
-
         System.out.println(">>>>>>>>> Deleting user ellie.mathan@gmail.com");
         try {
-            success = client.deleteUser("ellie.mathan@gmail.com");
+            client.deleteUser("ellie.mathan@gmail.com");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

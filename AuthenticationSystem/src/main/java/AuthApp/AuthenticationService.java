@@ -1,5 +1,8 @@
 package AuthApp;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +14,7 @@ class AuthenticationService {
     private UserRepository userRepository;
     private Map<String, String> usersTokens;
     private static final int TOKEN_LENGTH = 10;
+    private static Logger logger = LogManager.getLogger(AuthenticationService.class.getName());
 
     private AuthenticationService() throws IOException {
         userRepository = UserRepository.getInstance();
@@ -37,6 +41,7 @@ class AuthenticationService {
 
     public boolean register(String email, String name, String password) {
         if (isExistingEmail(email)) {
+            logger.warn("in AuthenticationService.register: This email already exists in the system!  - int Level:300");
             throw new IllegalArgumentException("This email address already exists!");
         }
 

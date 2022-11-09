@@ -24,35 +24,35 @@ public class Client {
         return authenticationController.register(email, name, password);
     }
 
-    public boolean updateUserName(String email, String name) throws IOException {
+    public void updateUserName(String email, String name) throws IOException {
         if (this.token == null) {
             throw new AccessDeniedException(String.format("User with email address: %s is not logged in!", email));
         }
 
-        return this.userController.updateUserName(email, name, this.token);
+        this.userController.updateUserName(email, name, this.token);
     }
 
-    public boolean updateUserEmail(String email, String newEmail) throws IOException {
+    public void updateUserEmail(String email, String newEmail) throws IOException {
         if (this.token == null) {
             throw new AccessDeniedException(String.format("User with email address: %s is not logged in!", email));
         }
 
-        return this.userController.updateUserEmail(email, newEmail, this.token);
+        this.userController.updateUserEmail(email, newEmail, this.token);
     }
 
-    public boolean updateUserPassword(String email, String password) throws IOException {
+    public void updateUserPassword(String email, String password) throws IOException {
         if (this.token == null) {
             throw new AccessDeniedException(String.format("User with email address: %s is not logged in!", email));
         }
 
-        return userController.updateUserPassword(email, password, token);
+        userController.updateUserPassword(email, password, token);
     }
 
-    public boolean deleteUser(String email) throws IOException {
+    public void deleteUser(String email) throws IOException {
         if (this.token == null) {
             throw new AccessDeniedException(String.format("User with email address: %s is not logged in!", email));
         }
 
-        return userController.deleteUser(email, this.token);
+        userController.deleteUser(email, this.token);
     }
 }
