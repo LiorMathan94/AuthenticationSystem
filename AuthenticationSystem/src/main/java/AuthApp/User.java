@@ -32,6 +32,5 @@ public class User {
     public void setPassword(String password) {this.password = password;}
 
     public static User createUser(String email, String name, String password) {
-        return new User(email, name, password);
-    }
+        return new User(email, name, password);}
 }

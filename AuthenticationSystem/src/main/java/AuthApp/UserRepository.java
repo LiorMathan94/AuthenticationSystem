@@ -4,22 +4,24 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 public class UserRepository {
     private static UserRepository singleInstance = null;
-
-    private final String usersFilepath = "users.json";
+    private final String usersFilepath = "UsersDB";
     private Map<Integer, User> usersMap;
 
 
-    private UserRepository() {
+    private UserRepository() throws IOException {
+        Files.createDirectories(Paths.get(this.usersFilepath));
         parseConfigToMap();
     }
 
-    public static UserRepository getInstance() {
+    public static UserRepository getInstance() throws IOException {
         if (singleInstance == null) {
             singleInstance = new UserRepository();
         }
@@ -27,37 +29,27 @@ public class UserRepository {
         return singleInstance;
     }
 
-    public Optional<User> getUser(int id) {
-        if (!usersMap.containsKey(id)) {
-            return Optional.empty();
-        }
-
-        return Optional.of(this.usersMap.get(id));
-    }
-
-    public void addUser(User user) {
+    public boolean addUser(User user) {
         usersMap.put(user.getId(), user);
-        saveToFile();
+        return writeToFile(user);
     }
 
-    public void updatedUserName(int id, String name) {
-        this.usersMap.get(id).setName(name);
-        saveToFile();
+    public boolean updatedUser(User user) {
+        this.usersMap.put(user.getId(), user);
+        return writeToFile(user);
     }
 
-    public void updateUserPassword(int id, String password) {
-        this.usersMap.get(id).setPassword(password);
-        saveToFile();
-    }
+    public boolean deleteUser(User user) {
+        this.usersMap.remove(user.getId());
+        File userFile = new File(getUserFilepath(user));
+        userFile.delete();
 
-    public void updateUserEmail(int id, String email) {
-        this.usersMap.get(id).setEmail(email);
-        saveToFile();
+        return true;
     }
 
     public Optional<User> getUserByEmail(String email) {
         for (User user : usersMap.values()) {
-            if (user.getEmail() == email) {
+            if (user.getEmail().compareTo(email) == 0) {
                 return Optional.of(user);
             }
         }
@@ -65,32 +57,35 @@ public class UserRepository {
         return Optional.empty();
     }
 
-    public void deleteUser(int id) {
-        this.usersMap.remove(id);
-        saveToFile();
+    private String getUserFilepath(User user) {
+        return this.usersFilepath + File.separator + user.getId() + ".json";
     }
 
     public void parseConfigToMap() {
         this.usersMap = new HashMap<>();
 
-        try (FileInputStream fileInputStream = new FileInputStream(this.usersFilepath)) {
-            Gson gson = new Gson();
-            JsonReader jsonReader = new JsonReader(new InputStreamReader(fileInputStream));
-            this.usersMap = gson.fromJson(jsonReader, HashMap.class);
-
-        } catch (FileNotFoundException ex) {
-            saveToFile();
-        } catch (IOException ex) {
-            throw new RuntimeException(String.format("Error occurred while trying to open: %s", this.usersFilepath));
+        final File folder = new File(this.usersFilepath);
+        for (final File fileEntry : folder.listFiles()) {
+            try (FileInputStream fileInputStream = new FileInputStream(fileEntry.getPath())) {
+                Gson gson = new Gson();
+                JsonReader jsonReader = new JsonReader(new InputStreamReader(fileInputStream));
+                User user = gson.fromJson(jsonReader, User.class);
+                this.usersMap.put(user.getId(), user);
+            } catch (IOException ex) {
+                throw new RuntimeException(String.format("Error occurred while trying to open: %s", fileEntry.getPath()));
+            }
         }
     }
 
-    private void saveToFile() {
-        try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.usersFilepath)))) {
+    private boolean writeToFile(User user) {
+        String absoluteFilePath = getUserFilepath(user);
+
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(absoluteFilePath)))) {
             Gson gson = new Gson();
-            gson.toJson(this.usersMap, writer);
+            gson.toJson(user, writer);
+            return true;
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Filename: \"" + this.usersFilepath + "\" was not found.");
+            throw new RuntimeException("Filename: \"" + absoluteFilePath + "\" was not found.");
         } catch (IOException e) {
             throw new RuntimeException("Error occurred while trying to open new default json file.");
         }
